@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mediscreen.assessment.AssessmentServiceTest" tests="36" skipped="0" failures="0" errors="0" timestamp="2022-04-22T13:13:58" hostname="iMac-de-Admin" time="0.254">
+  <properties/>
+  <testcase name="Above30Man7Triggers()" classname="com.mediscreen.assessment.AssessmentServiceTest" time="0.039"/>
+  <testcase name="Under30Man2TriggersShouldGetTestBorderline()" classname="com.mediscreen.assessment.AssessmentServiceTest" time="0.009"/>
+  <testcase name="Above30Woman4Triggers()" classname="com.mediscreen.assessment.AssessmentServiceTest" time="0.006"/>
+  <testcase name="Under30Man3Triggers()" classname="com.mediscreen.assessment.AssessmentServiceTest" time="0.004"/>
+  <testcase name="Under30Woman4Triggers()" classname="com.mediscreen.assessment.AssessmentServiceTest" time="0.004"/>
+  <testcase name="Above30Man9Triggers()" classname="com.mediscreen.assessment.AssessmentServiceTest" time="0.004"/>
+  <testcase name="Under30Man0Trigger()" classname="com.mediscreen.assessment.AssessmentServiceTest" time="0.004"/>
+  <testcase name="Above30Woman6Triggers()" classname="com.mediscreen.assessment.AssessmentServiceTest" time="0.005"/>
+  <testcase name="Under30Man5Triggers()" classname="com.mediscreen.assessment.AssessmentServiceTest" time="0.006"/>
+  <testcase name="Above30Man0Trigger()" classname="com.mediscreen.assessment.AssessmentServiceTest" time="0.004"/>
+  <testcase name="Above30Man4Triggers()" classname="com.mediscreen.assessment.AssessmentServiceTest" time="0.005"/>
+  <testcase name="Under30Woman6Triggers()" classname="com.mediscreen.assessment.AssessmentServiceTest" time="0.004"/>
+  <testcase name="Under30Man1TriggerShouldGetTestNone()" classname="com.mediscreen.assessment.AssessmentServiceTest" time="0.004"/>
+  <testcase name="Above30Man2Triggerse()" classname="com.mediscreen.assessment.AssessmentServiceTest" time="0.004"/>
+  <testcase name="Above30Woman0Trigger()" classname="com.mediscreen.assessment.AssessmentServiceTest" time="0.004"/>
+  <testcase name="Under30Woman1Triggere()" classname="com.mediscreen.assessment.AssessmentServiceTest" time="0.004"/>
+  <testcase name="Above30Woman8Triggers()" classname="com.mediscreen.assessment.AssessmentServiceTest" time="0.005"/>
+  <testcase name="Above30Man6Triggers()" classname="com.mediscreen.assessment.AssessmentServiceTest" time="0.01"/>
+  <testcase name="Under30Woman8Triggers()" classname="com.mediscreen.assessment.AssessmentServiceTest" time="0.004"/>
+  <testcase name="Above30Woman3Triggers()" classname="com.mediscreen.assessment.AssessmentServiceTest" time="0.005"/>
+  <testcase name="Under30Woman3Triggers()" classname="com.mediscreen.assessment.AssessmentServiceTest" time="0.004"/>
+  <testcase name="Above30Man8Triggers()" classname="com.mediscreen.assessment.AssessmentServiceTest" time="0.004"/>
+  <testcase name="Above30Woman5Triggers()" classname="com.mediscreen.assessment.AssessmentServiceTest" time="0.004"/>
+  <testcase name="Above30Man1Trigger()" classname="com.mediscreen.assessment.AssessmentServiceTest" time="0.003"/>
+  <testcase name="Under30Man4Triggers()" classname="com.mediscreen.assessment.AssessmentServiceTest" time="0.004"/>
+  <testcase name="Above30Man3Triggers()" classname="com.mediscreen.assessment.AssessmentServiceTest" time="0.004"/>
+  <testcase name="Under30Woman5Triggers()" classname="com.mediscreen.assessment.AssessmentServiceTest" time="0.004"/>
+  <testcase name="Under30Woman0Trigger()" classname="com.mediscreen.assessment.AssessmentServiceTest" time="0.002"/>
+  <testcase name="Above30Woman1Trigger()" classname="com.mediscreen.assessment.AssessmentServiceTest" time="0.005"/>
+  <testcase name="Above30Woman7Triggers()" classname="com.mediscreen.assessment.AssessmentServiceTest" time="0.004"/>
+  <testcase name="Under30Man6Triggers()" classname="com.mediscreen.assessment.AssessmentServiceTest" time="0.005"/>
+  <testcase name="Above30Man5Triggers()" classname="com.mediscreen.assessment.AssessmentServiceTest" time="0.006"/>
+  <testcase name="Under30Woman7Triggers()" classname="com.mediscreen.assessment.AssessmentServiceTest" time="0.004"/>
+  <testcase name="Above30Woman2Triggers()" classname="com.mediscreen.assessment.AssessmentServiceTest" time="0.004"/>
+  <testcase name="Under30Woman2Triggers()" classname="com.mediscreen.assessment.AssessmentServiceTest" time="0.004"/>
+  <testcase name="Above30Woman9Triggers()" classname="com.mediscreen.assessment.AssessmentServiceTest" time="0.004"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

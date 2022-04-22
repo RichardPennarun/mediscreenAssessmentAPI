@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Util.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">MediscreenAssessmentApi</a> &gt; <a href="index.source.html" class="el_package">com.mediscreen.assessment.util</a> &gt; <span class="el_source">Util.java</span></div><h1>Util.java</h1><pre class="source lang-java linenums">package com.mediscreen.assessment.util;
+
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import com.mediscreen.assessment.model.Note;
+import com.mediscreen.assessment.model.DTO.PatientDTO;
+
+<span class="nc" id="L13">public class Util {</span>
+
+	/*
+	 * Calcul de l'âge à partir d'une date de naissance 
+	 * INPUT : un String, la date,
+	 * quelque soit son format 
+	 * OUTPUT : un int l'âge
+	 */
+	public static int getAge(final String dob) {
+
+<span class="fc" id="L23">		DateTimeFormatter formatter = DateTimeFormatter.ofPattern(&quot;yyyy-MM-dd&quot;);</span>
+<span class="fc" id="L24">		LocalDate localBirthdate = LocalDate.parse(dob, formatter);</span>
+<span class="fc" id="L25">		LocalDate today = LocalDate.now();</span>
+<span class="fc" id="L26">		Period age = Period.between(localBirthdate, today);</span>
+
+<span class="fc" id="L28">		return age.getYears();</span>
+	}
+
+	/*
+	 * Vérification de la présence des déclencheurs dans les notes du patient 
+	 * INPUT : Un PatientDTO et la liste des déclencheurs 
+	 * OUTPUT : Le nombre de déclencheurs
+	 * présents dans les notes
+	 */
+	public static int getTriggerNumber(PatientDTO patientDTO, ArrayList&lt;String&gt; triggersList) {
+
+		// Concaténation de l'ensemble des recommandations du patient
+<span class="fc" id="L40">		String recommendations = &quot;&quot;;</span>
+<span class="fc bfc" id="L41" title="All 2 branches covered.">		for (Note note : patientDTO.getNotes()) {</span>
+<span class="fc" id="L42">			recommendations = recommendations + &quot; &quot; + note.getRecommendation() + &quot; &quot;;</span>
+<span class="fc" id="L43">		}</span>
+
+		// Initialisation de la variable Nombre de triggers
+<span class="fc" id="L46">		int triggerNumber = 0;</span>
+
+		// Pour chaque trigger, vérification de la présence d'au moins
+		// une occurence dans les recommandations
+<span class="fc bfc" id="L50" title="All 2 branches covered.">		for (String trigger : triggersList) {</span>
+
+<span class="fc" id="L52">			Pattern pattern = Pattern.compile(&quot;(?i).*&quot; + trigger);</span>
+<span class="fc" id="L53">			Matcher matcher = pattern.matcher(recommendations);</span>
+<span class="fc bfc" id="L54" title="All 2 branches covered.">			if (matcher.find() == true) {</span>
+<span class="fc" id="L55">				triggerNumber++;</span>
+			}
+<span class="fc" id="L57">		}</span>
+
+<span class="fc" id="L59">		return triggerNumber;</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

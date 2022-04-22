@@ -1,0 +1,57 @@
+package com.mediscreen.assessment.model;
+
+import java.util.Date;
+
+public class Note {
+
+	private String id;
+	
+	private Date date;
+	
+	private int patientId;
+	
+	private String recommendation;
+
+	public Note() {
+		super();
+	}
+
+	public Note(int patientId, String recommendation) {
+		this.patientId = patientId;
+		this.recommendation = recommendation;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public int getPatientId() {
+		return patientId;
+	}
+
+	public void setPatientId(int patientId) {
+		this.patientId = patientId;
+	}
+
+	public String getRecommendation() {
+		return recommendation;
+	}
+
+	public void setRecommendation(String recommendation) {
+		this.recommendation = recommendation;
+	}
+	
+
+}

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AssessmentService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">MediscreenAssessmentApi</a> &gt; <a href="index.source.html" class="el_package">com.mediscreen.assessment.service</a> &gt; <span class="el_source">AssessmentService.java</span></div><h1>AssessmentService.java</h1><pre class="source lang-java linenums">package com.mediscreen.assessment.service;
+
+import java.util.ArrayList;
+import org.springframework.stereotype.Service;
+
+import com.mediscreen.assessment.constants.TriggerNumberByProfile;
+import com.mediscreen.assessment.model.DTO.PatientDTO;
+import com.mediscreen.assessment.util.Util;
+
+@Service
+<span class="fc" id="L11">public class AssessmentService {</span>
+
+	/*
+	 * 
+	 * Test du patient 
+	 * INPUT : un PatientDTO avec liste de notes et de triggers
+	 * OUTPUT : un Patient avec la variable assessment remplie
+	 * 
+	 * 
+	 */
+	public PatientDTO assess(PatientDTO patientToAssess) {
+
+		// Récupération de la liste des triggers
+<span class="fc" id="L24">		ArrayList&lt;String&gt; triggersList = patientToAssess.getTriggersList();</span>
+		
+		// Comptage du nombre de déclencheurs dans les recommandations du patient
+<span class="fc" id="L27">		int triggerNumber = Util.getTriggerNumber(patientToAssess, triggersList);</span>
+
+		// Récupération âge et sex du patient
+<span class="fc" id="L30">		int age = Util.getAge(patientToAssess.getDob());</span>
+<span class="fc" id="L31">		String sex = patientToAssess.getSex();</span>
+
+		// Initialisation de la variable test
+<span class="fc" id="L34">		String assessment = &quot;TestNone&quot;;</span>
+
+		// Evaluation
+		// Si le patient a plus de 30 ans
+<span class="fc bfc" id="L38" title="All 2 branches covered.">		if (age &gt;= 30) {</span>
+			// Si le patient est un homme
+<span class="fc bfc" id="L40" title="All 2 branches covered.">			if (sex == &quot;M&quot;) {</span>
+				// Si le nombres de déclencheurs est supérieur au seuil Early Onset
+<span class="fc bfc" id="L42" title="All 2 branches covered.">				if (triggerNumber &gt;= TriggerNumberByProfile.M_ABOVE_THIRTY_EARLY_ONSET) {</span>
+<span class="fc" id="L43">					assessment = &quot;TestEarlyOnset&quot;;</span>
+					// Si le nombres de déclencheurs est supérieur au seuil In Danger
+<span class="pc bpc" id="L45" title="1 of 4 branches missed.">				} else if (triggerNumber &gt;= TriggerNumberByProfile.M_ABOVE_THIRTY_IN_DANGER</span>
+						&amp;&amp; triggerNumber &lt; TriggerNumberByProfile.M_ABOVE_THIRTY_EARLY_ONSET) {
+<span class="fc" id="L47">					assessment = &quot;TestInDanger&quot;;</span>
+					// Si le nombres de déclencheurs est supérieur au seuil Borderline
+<span class="pc bpc" id="L49" title="1 of 4 branches missed.">				} else if (triggerNumber &gt;= TriggerNumberByProfile.M_ABOVE_THIRTY_BORDERLINE</span>
+						&amp;&amp; triggerNumber &lt; TriggerNumberByProfile.M_ABOVE_THIRTY_IN_DANGER) {
+<span class="fc" id="L51">					assessment = &quot;TestBorderline&quot;;</span>
+				}
+				// Si le patient est une femme
+			} else {
+				// Si le nombres de déclencheurs est supérieur au seuil Early Onset
+<span class="fc bfc" id="L56" title="All 2 branches covered.">				if (triggerNumber &gt;= TriggerNumberByProfile.W_ABOVE_THIRTY_EARLY_ONSET) {</span>
+<span class="fc" id="L57">					assessment = &quot;TestEarlyOnset&quot;;</span>
+					// Si le nombres de déclencheurs est supérieur au seuil In Danger
+<span class="pc bpc" id="L59" title="1 of 4 branches missed.">				} else if (triggerNumber &gt;= TriggerNumberByProfile.W_ABOVE_THIRTY_IN_DANGER</span>
+						&amp;&amp; triggerNumber &lt; TriggerNumberByProfile.W_ABOVE_THIRTY_EARLY_ONSET) {
+<span class="fc" id="L61">					assessment = &quot;TestInDanger&quot;;</span>
+					// Si le nombres de déclencheurs est supérieur au seuil Borderline
+<span class="pc bpc" id="L63" title="1 of 4 branches missed.">				} else if (triggerNumber &gt;= TriggerNumberByProfile.W_ABOVE_THIRTY_BORDERLINE</span>
+						&amp;&amp; triggerNumber &lt; TriggerNumberByProfile.W_ABOVE_THIRTY_IN_DANGER) {
+<span class="fc" id="L65">					assessment = &quot;TestBorderline&quot;;</span>
+				}
+			}
+			// Si le patient a moins de 30 ans
+		} else {
+			// Si le patient est un homme
+<span class="fc bfc" id="L71" title="All 2 branches covered.">			if (sex == &quot;M&quot;) {</span>
+				// Si le nombres de déclencheurs est supérieur au seuil Early Onset
+<span class="fc bfc" id="L73" title="All 2 branches covered.">				if (triggerNumber &gt;= TriggerNumberByProfile.M_UNDER_THIRTY_EARLY_ONSET) {</span>
+<span class="fc" id="L74">					assessment = &quot;TestEarlyOnset&quot;;</span>
+					// Si le nombres de déclencheurs est supérieur au seuil In Danger
+<span class="pc bpc" id="L76" title="1 of 4 branches missed.">				} else if (triggerNumber &gt;= TriggerNumberByProfile.M_UNDER_THIRTY_IN_DANGER</span>
+						&amp;&amp; triggerNumber &lt; TriggerNumberByProfile.M_UNDER_THIRTY_EARLY_ONSET) {
+<span class="fc" id="L78">					assessment = &quot;TestInDanger&quot;;</span>
+				}
+				// Si le patient est une femme
+			} else {
+				// Si le nombres de déclencheurs est supérieur au seuil Early Onset
+<span class="fc bfc" id="L83" title="All 2 branches covered.">				if (triggerNumber &gt;= TriggerNumberByProfile.W_UNDER_THIRTY_EARLY_ONSET) {</span>
+<span class="fc" id="L84">					assessment = &quot;TestEarlyOnset&quot;;</span>
+					// Si le nombres de déclencheurs est supérieur au seuil In Danger
+<span class="pc bpc" id="L86" title="1 of 4 branches missed.">				} else if (triggerNumber &gt;= TriggerNumberByProfile.W_UNDER_THIRTY_IN_DANGER</span>
+						&amp;&amp; triggerNumber &lt; TriggerNumberByProfile.W_UNDER_THIRTY_EARLY_ONSET) {
+<span class="fc" id="L88">					assessment = &quot;TestInDanger&quot;;</span>
+				}
+			}
+		}
+
+<span class="fc" id="L93">		patientToAssess.setAssessment(assessment);</span>
+
+<span class="fc" id="L95">		PatientDTO assessedPatient = new PatientDTO();</span>
+
+<span class="fc" id="L97">		assessedPatient.setLastName(patientToAssess.getLastName());</span>
+<span class="fc" id="L98">		assessedPatient.setFirstName(patientToAssess.getFirstName());</span>
+<span class="fc" id="L99">		assessedPatient.setDob(patientToAssess.getDob());</span>
+<span class="fc" id="L100">		assessedPatient.setSex(patientToAssess.getSex());</span>
+<span class="fc" id="L101">		assessedPatient.setNotes(patientToAssess.getNotes());</span>
+<span class="fc" id="L102">		assessedPatient.setAssessment(assessment);</span>
+
+<span class="fc" id="L104">		return assessedPatient;</span>
+
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
